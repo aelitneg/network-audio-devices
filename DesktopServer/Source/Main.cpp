@@ -1,28 +1,25 @@
 /*
   ==============================================================================
 
-    This file is the entry point for the Desktop Client application.
+    This file contains the basic startup code for the Desktop Server application.
 
   ==============================================================================
 */
 
+#include <math.h>
 #include <JuceHeader.h>
-
 #include "MainComponent.h"
 //==============================================================================
 
 int main (int argc, char* argv[])
 {
-    MainComponent main_component;
+    // Load an audio file from disk
+    // TODO: Make file path an argument
+    MainComponent main_component("/Users/andrew.gentile/Desktop/audio.wav");
     
     // TODO: Implement a GUI to keep the MainComponent running
-    juce::Logger::getCurrentLogger()->writeToLog("Press any key to play");
+    juce::Logger::getCurrentLogger()->writeToLog("\nPress any key to exit...\n");
     std::cin.get();
-    main_component.Play();
-    
-    juce::Logger::getCurrentLogger()->writeToLog("Press any key to exit");
-    std::cin.get();
-    main_component.Stop();
     
     return 0;
 }
