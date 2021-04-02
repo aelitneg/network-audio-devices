@@ -6,20 +6,35 @@
   ==============================================================================
 */
 
-#include <math.h>
+#include <exception>
 #include <JuceHeader.h>
 #include "MainComponent.h"
 //==============================================================================
 
 int main (int argc, char* argv[])
 {
-    // Load an audio file from disk
-    // TODO: Make file path an argument
-    MainComponent main_component("/Users/agentile/Desktop/audio.wav");
+    juce::Logger *log = juce::Logger::getCurrentLogger();
     
-    // TODO: Implement a GUI to keep the MainComponent running
-    juce::Logger::getCurrentLogger()->writeToLog("\nPress any key to exit...\n");
-    std::cin.get();
+    try
+    {
+        // Load an audio file from disk
+        if (argc < 2) {
+            log->writeToLog("usage: DesktopServer path");
+            return -1;
+        }
+        
+        MainComponent main_component(argv[1]);
+        
+        // TODO: Implement a GUI to keep the MainComponent running
+        log->writeToLog("\nPress any key to exit...\n");
+        std::cin.get();
+        
+    }
+    catch (std::exception &e)
+    {
+        log->writeToLog("Unhandled Exception: " + juce::String(e.what()));
+        return -1;
+    }
     
     return 0;
 }

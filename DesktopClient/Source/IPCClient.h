@@ -16,9 +16,6 @@
 class IPCClient  : public juce::InterprocessConnection
 {
 private:
-    juce::String hostname_{"192.168.215.51"};
-    int port_number_{3000};
-    int timeout_{15 * 1000};
     std::vector<juce::MemoryBlock> &queue_;
     juce::CriticalSection &objectLock_;
     
@@ -33,9 +30,10 @@ public:
         disconnect();
     }
     
-    bool ConnectToSocket()
+    bool ConnectToSocket(juce::String &hostname, int port_number)
     {
-        return connectToSocket(hostname_, port_number_, timeout_);
+        int timeout{15 * 1000};
+        return connectToSocket(hostname, port_number, timeout);
     }
     
     void connectionMade() override

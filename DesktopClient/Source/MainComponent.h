@@ -26,14 +26,12 @@ private:
     int kNumChannels{2};
     int kBufferLen{512};
     
-    bool isPlaying{false};
     juce::CriticalSection objectLock_;
     
 public:
     MainComponent()
     {
         setAudioChannels(0, kNumOutputChannels);
-        Connect();
     }
     
     ~MainComponent() override
@@ -47,7 +45,7 @@ public:
     
     void getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill) override
     {
-        if (!isPlaying || queue_.size() < 1)
+        if (queue_.size() < 1)
         {
             bufferToFill.clearActiveBufferRegion();
             return;
@@ -69,10 +67,10 @@ public:
     {
     }
     
-    void Connect()
+    void Connect(juce::String &hostname, int &port)
     {
         std::unique_ptr<IPCClient> ipc_client(new IPCClient(queue_, objectLock_));
-        if(ipc_client == nullptr || !ipc_client.get()->ConnectToSocket())
+        if(ipc_client == nullptr || !ipc_client.get()->ConnectToSocket(hostname, port))
         {
             juce::Logger::getCurrentLogger()->writeToLog("ConnectToSocket failed");
             return;
@@ -82,16 +80,6 @@ public:
         ipc_client_.reset(ipc_client.release());
     }
     
-    void Play()
-    {
-        isPlaying = true;
-    }
-    
-    void Stop()
-    {
-        isPlaying = false;
-    }
-
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
