@@ -20,10 +20,11 @@ private:
     int port_number_{3000};
     int timeout_{15 * 1000};
     std::vector<juce::MemoryBlock> &queue_;
+    juce::CriticalSection &objectLock_;
     
 public:
-    IPCClient(std::vector<juce::MemoryBlock> &queue) :
-        juce::InterprocessConnection(false), queue_(queue)
+    IPCClient(std::vector<juce::MemoryBlock> &queue, juce::CriticalSection &objectLock) :
+        juce::InterprocessConnection(false), queue_(queue), objectLock_(objectLock)
     {
     }
     
@@ -49,7 +50,8 @@ public:
     
     void messageReceived(const juce::MemoryBlock &msg) override
     {
-        queue_.push_back(msg);
+        const juce::ScopedLock scopedLock (objectLock_);
+        queue_.push_back(msg); // Uses copy constructor
     }
     
 private:

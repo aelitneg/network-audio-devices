@@ -27,6 +27,7 @@ private:
     int kBufferLen{512};
     
     bool isPlaying{false};
+    juce::CriticalSection objectLock_;
     
 public:
     MainComponent()
@@ -52,6 +53,8 @@ public:
             return;
         }
         
+        const juce::ScopedLock scopedLock(objectLock_);
+        
         const float *data = reinterpret_cast<const float*>(queue_.front().getData());
         for (int ch = 0; ch < bufferToFill.buffer->getNumChannels(); ch++)
         {
@@ -68,7 +71,7 @@ public:
     
     void Connect()
     {
-        std::unique_ptr<IPCClient> ipc_client(new IPCClient(queue_));
+        std::unique_ptr<IPCClient> ipc_client(new IPCClient(queue_, objectLock_));
         if(ipc_client == nullptr || !ipc_client.get()->ConnectToSocket())
         {
             juce::Logger::getCurrentLogger()->writeToLog("ConnectToSocket failed");

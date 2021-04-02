@@ -15,7 +15,7 @@ int main (int argc, char* argv[])
 {
     // Load an audio file from disk
     // TODO: Make file path an argument
-    MainComponent main_component("/Users/andrew.gentile/Desktop/audio.wav");
+    MainComponent main_component("/Users/agentile/Desktop/audio.wav");
     
     // TODO: Implement a GUI to keep the MainComponent running
     juce::Logger::getCurrentLogger()->writeToLog("\nPress any key to exit...\n");
