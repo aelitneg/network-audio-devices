@@ -13,3 +13,4 @@
 /MobileClient/Builds/iOS/MobileClient
 /MobileClient/Builds/iOS/*.plist
 /MobileClient/Builds/iOS/*.storyboard
+/MobileClient/Builds/iOS/MobileClient.xcodeproj/project.xcworkspace/xcuserdata/
