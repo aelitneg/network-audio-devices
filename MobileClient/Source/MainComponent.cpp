@@ -86,7 +86,7 @@ void MainComponent::resized()
     port_label_.setBounds(25, getHeight() / 4 + 100, getWidth() - 50, 50);
     port_text_editor_.setBounds(25, getHeight() / 4 + 150, getWidth() - 50, 50);
     
-    connect_button_.setBounds (25, getHeight() / 2 + 15, getWidth() - 50, 50);
+    connect_button_.setBounds (25, getHeight() / 4 + 250, getWidth() - 50, 50);
 }
 
 void MainComponent::ConnectButtonClicked()
