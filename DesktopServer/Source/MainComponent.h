@@ -23,7 +23,7 @@ private:
     std::vector<juce::AudioBuffer<float>> queue_;
     
     // TODO: Set audio buffer length dynmically
-    int buffer_len_{512};
+    int buffer_len_{256};
     int num_channels_{0};
     
     IPCServer server_;
