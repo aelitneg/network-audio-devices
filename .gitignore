@@ -1,3 +1,15 @@
+# MacOS .DS_Store Files
 .DS_Store
-**/Builds/
+
+# Generated JUCE Library Code
 **/JuceLibraryCode/
+
+# Desktop Builds
+/DesktopClient/Builds
+/DesktopServer/Builds
+
+# Mobile Client Builds (keep XCode Project)
+/MobileClient/Builds/iOS/build
+/MobileClient/Builds/iOS/MobileClient
+/MobileClient/Builds/iOS/*.plist
+/MobileClient/Builds/iOS/*.storyboard
