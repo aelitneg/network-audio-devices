@@ -48,3 +48,17 @@ iOS implementation of the desktop client. Receive audio in real time from a Desk
 ### Plugin
 
 VST / AudioUnits(AU) plugin implementation of the DesktopServer application. An InterprocessConnection server is started when an instance of the plugin is created in a suitable host application (JUCE's AudioPluginHost). When a client connects, the processBlock sends a copy of the input AudioBuffer to the InterprocessConnection, which converts it to a MemoryBlock to be seent to the connected client.
+
+### Limitations 
+
+This section describes the assumptions necessary to make the Plugin and MobileClient work properly. 
+
+- Mobile Client
+   - On a physical device, iOS audio runs at 48kHz with a buffer length of 256 samples
+   - In the simulator iOS audio runs runs at 44.1kHz with a buffer length of 512 samples
+   - 2 channels of audio
+- Plugin
+   - Both the sample rate and the buffer length must match that of the client
+   - Listens on all available IP addresses on **port 3000**
+   - 2 channels of audio
+

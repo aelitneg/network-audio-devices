@@ -155,18 +155,11 @@ void PluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     if (server_.ClientConnected())
     {
         juce::AudioBuffer<float> audio_buffer;
-        audio_buffer.setSize(totalNumInputChannels, buffer.getNumSamples() / 2);
+        audio_buffer.setSize(totalNumInputChannels, buffer.getNumSamples());
         
         for (int ch = 0; ch < totalNumInputChannels; ch++)
         {
-            audio_buffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples() / 2);
-        }
-        
-        server_.SendMessage(audio_buffer);
-        
-        for (int ch = 0; ch < totalNumInputChannels; ch++)
-        {
-            audio_buffer.copyFrom(ch, 0, buffer, ch, buffer.getNumSamples() / 2, buffer.getNumSamples() / 2);
+            audio_buffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
         }
         
         server_.SendMessage(audio_buffer);
