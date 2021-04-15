@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="noWOuS" name="Plugin" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              companyName="Network Audio Devices" companyCopyright="2021" companyEmail="agentile1990@gmail.com"
+              companyWebsite="https://github.com/agentile1990/network-audio-devices"
+              pluginName="Network Audio Device" pluginDesc="Transmit audio to Network Audio Device Client"
+              pluginManufacturerCode="NADS" pluginCode="NATX" pluginVST3Category="Network"
+              bundleIdentifier="com.network-audio-devices.network-audio-device">
   <MAINGROUP id="qprTrs" name="Plugin">
     <GROUP id="{6B493B93-BEA9-E671-CED6-11D1E39BB19D}" name="Source">
       <FILE id="qevcBb" name="IPCServer.h" compile="0" resource="0" file="Source/IPCServer.h"/>
