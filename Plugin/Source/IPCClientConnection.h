@@ -23,6 +23,7 @@ public:
     
     ~IPCClientConnection()
     {
+        disconnect();
     }
     
     void connectionMade() override
