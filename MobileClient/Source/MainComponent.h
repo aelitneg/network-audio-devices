@@ -32,10 +32,6 @@ private:
     std::unique_ptr<IPCClient> ipc_client_{nullptr};
     std::vector<juce::MemoryBlock> queue_;
     
-    // TODO: These should be encoded in a message header
-    int kNumChannels{2};
-    int kBufferLen{512};
-    
     juce::CriticalSection object_lock_;
     
     //==============================================================================

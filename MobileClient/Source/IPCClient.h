@@ -48,9 +48,9 @@ public:
     
     void messageReceived(const juce::MemoryBlock &msg) override
     {
-        object_lock_.enter();
+        juce::ScopedLock scoped_lock(object_lock_);
+        
         queue_.push_back(msg); // Uses copy constructor
-        object_lock_.exit();
     }
     
 private:
