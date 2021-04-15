@@ -28,10 +28,6 @@ public:
     {
     }
     
-    IPCServer(int port, juce::String &bind_address) : port_(port), bind_address_(bind_address)
-    {
-    }
-    
     ~IPCServer()
     {
     }
