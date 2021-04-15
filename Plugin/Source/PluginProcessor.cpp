@@ -22,6 +22,7 @@ PluginAudioProcessor::PluginAudioProcessor()
                        )
 #endif
 {
+    InitializeServer();
 }
 
 PluginAudioProcessor::~PluginAudioProcessor()
@@ -150,11 +151,25 @@ void PluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    
+    if (server_.ClientConnected())
     {
-        auto* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
+        juce::AudioBuffer<float> audio_buffer;
+        audio_buffer.setSize(totalNumInputChannels, buffer.getNumSamples() / 2);
+        
+        for (int ch = 0; ch < totalNumInputChannels; ch++)
+        {
+            audio_buffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples() / 2);
+        }
+        
+        server_.SendMessage(audio_buffer);
+        
+        for (int ch = 0; ch < totalNumInputChannels; ch++)
+        {
+            audio_buffer.copyFrom(ch, 0, buffer, ch, buffer.getNumSamples() / 2, buffer.getNumSamples() / 2);
+        }
+        
+        server_.SendMessage(audio_buffer);
     }
 }
 
@@ -188,4 +203,11 @@ void PluginAudioProcessor::setStateInformation (const void* data, int sizeInByte
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new PluginAudioProcessor();
+}
+
+//==============================================================================
+void PluginAudioProcessor::InitializeServer()
+{
+    juce::Logger::getCurrentLogger()->writeToLog("Starting IPCServer");
+    if (!server_.BeginWaitingForSocket()) { return; }
 }

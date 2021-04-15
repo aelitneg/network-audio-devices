@@ -9,6 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "IPCServer.h"
 
 //==============================================================================
 /**
@@ -55,5 +56,9 @@ public:
 
 private:
     //==============================================================================
+    IPCServer server_;
+    
+    void InitializeServer();
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginAudioProcessor)
 };

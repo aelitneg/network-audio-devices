@@ -4,6 +4,9 @@
 # Generated JUCE Library Code
 **/JuceLibraryCode/
 
+# Sandbox 
+/Sandbox/Builds
+
 # Desktop Builds
 /DesktopClient/Builds
 /DesktopServer/Builds

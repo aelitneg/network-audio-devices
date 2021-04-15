@@ -67,10 +67,12 @@
 /* Begin PBXFileReference section */
 		033D56C66569596734EBFA12 /* Info-AU.plist */ /* Info-AU.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AU.plist"; path = "Info-AU.plist"; sourceTree = SOURCE_ROOT; };
 		072531381C0919C1DA5EBE92 /* DiscRecording.framework */ /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
+		0CE9C1F7C08360BC6B48BF13 /* IPCServer.h */ /* IPCServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPCServer.h; path = ../../Source/IPCServer.h; sourceTree = SOURCE_ROOT; };
 		1A1B4E32E95327215AB9392E /* juce_audio_utils */ /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = /Users/agentile/Developer/JUCE/modules/juce_audio_utils; sourceTree = "<absolute>"; };
 		1DB12011AF63AF207C011C3C /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		21C273FC0EAAE36E6ACD712D /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = /Users/agentile/Developer/JUCE/modules/juce_graphics; sourceTree = "<absolute>"; };
 		30261B6E5E0095888F140E36 /* include_juce_audio_devices.mm */ /* include_juce_audio_devices.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_devices.mm; path = ../../JuceLibraryCode/include_juce_audio_devices.mm; sourceTree = SOURCE_ROOT; };
+		38F0CFD0E588F12B0D2F720D /* IPCClientConnection.h */ /* IPCClientConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPCClientConnection.h; path = ../../Source/IPCClientConnection.h; sourceTree = SOURCE_ROOT; };
 		3F40260C07D096CCED05CC57 /* juce_audio_basics */ /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_basics; path = /Users/agentile/Developer/JUCE/modules/juce_audio_basics; sourceTree = "<absolute>"; };
 		48DCC8DFEA418386E0332ECF /* PluginProcessor.h */ /* PluginProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginProcessor.h; path = ../../Source/PluginProcessor.h; sourceTree = SOURCE_ROOT; };
 		4C7E5A87903D934DA2473741 /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
@@ -229,6 +231,8 @@
 		6F10DF62BB689A201B928787 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0CE9C1F7C08360BC6B48BF13,
+				38F0CFD0E588F12B0D2F720D,
 				4F933AEC2C7C4BFE2B04EDEA,
 				48DCC8DFEA418386E0332ECF,
 				823AF10CC6F3D48BAB252701,
