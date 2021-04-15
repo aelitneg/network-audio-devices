@@ -40,3 +40,11 @@ Transmit audio in real time over a network connection. Loads an audio file from 
 ### DesktopClient
 
 Receive audio in real time over a network connection. Using an InterprocessConnection to a DesktopServer instance, receives audio data as a MemoryBlock. The data from the MemoryBlock is copied into an AudioBuffer provided by the OS for playback by the system audio hardware.
+
+### MobileClient
+
+iOS implementation of the desktop client. Receive audio in real time from a DesktopServer or Plugin instance via an InterprocessConnection. MemoryBlocks are copied into an AudioBuffer provided by the OS for playback by the device's audio hardware.
+
+### Plugin
+
+VST / AudioUnits(AU) plugin implementation of the DesktopServer application. An InterprocessConnection server is started when an instance of the plugin is created in a suitable host application (JUCE's AudioPluginHost). When a client connects, the processBlock sends a copy of the input AudioBuffer to the InterprocessConnection, which converts it to a MemoryBlock to be seent to the connected client.
